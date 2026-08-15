@@ -45,12 +45,14 @@ Use via **require**, as in:
 
 ```Ruby
 require 'woad'
+
+puts "#{Woad::FG_GREEN}ok#{Woad::RESET}"
 ```
 
 
 ## Components
 
-**woad.Ruby** currently ships the **`Woad`** root module and version metadata (`require 'woad'`). Colour codes, TTY/stream gating, and Windows virtual-terminal opt-in are not implemented in this 0.0.0 skeleton.
+**woad.Ruby** ships SGR string constants (`RESET`, `FG_*`, `BG_*`, including bright variants). TTY/stream gating and Windows virtual-terminal opt-in are not implemented yet.
 
 
 ## Project Information
