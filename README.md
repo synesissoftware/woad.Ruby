@@ -81,6 +81,7 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Related projects
 
+* [**woad**](https://github.com/synesissoftware/woad/)
 * [**woad.Python**](https://github.com/synesissoftware/woad.Python/)
 * [**woad.Rust**](https://github.com/synesissoftware/woad.Rust/)
 
