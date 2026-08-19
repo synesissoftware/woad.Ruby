@@ -1,12 +1,12 @@
-# ######################################################################### #
+# ######################################################################## #
 # File:     woad.gemspec
 #
 # Purpose:  Gemspec for woad.Ruby library
 #
 # Created:  15th August 2026
-# Updated:  15th August 2026
+# Updated:  19th August 2026
 #
-# ######################################################################### #
+# ######################################################################## #
 
 
 $:.unshift File.join(File.dirname(__FILE__), 'lib')
@@ -17,8 +17,8 @@ require 'woad/version'
 Gem::Specification.new do |spec|
 
   spec.name         = 'woad'
+  spec.summary      = 'Minimal ANSI terminal colour codes, for Ruby'
   spec.version      = Woad::VERSION
-  spec.summary      = 'woad.Ruby'
   spec.description  = <<END_DESC
 Minimal ANSI terminal colour codes, for Ruby.
 
@@ -34,11 +34,7 @@ END_DESC
   spec.homepage     = 'https://github.com/synesissoftware/woad.Ruby'
   spec.license      = 'BSD-3-Clause'
 
-  spec.required_ruby_version = [ '>= 2.0', '< 5' ]
-
-  spec.require_paths = [
-    'lib',
-  ]
+  spec.required_ruby_version = [ '>= 2.0' ]
 
   spec.metadata = {
     'bug_tracker_uri' => 'https://github.com/synesissoftware/woad.Ruby/issues',
@@ -47,7 +43,25 @@ END_DESC
     'source_code_uri' => 'https://github.com/synesissoftware/woad.Ruby',
   }
 
-  spec.files        = Dir[ 'Rakefile', '{bin,examples,lib,man,spec,test}/**/*', 'AUTHORS.md', 'CHANGES.md', 'LICENSE*', 'NEWS.md', 'README*', 'TODO.md' ]
+  spec.files = Dir[
+    'Rakefile',
+    '{bin,examples,lib,man,spec,test}/**/*',
+    'AUTHORS*',
+    'CHANGES*',
+    'CONTRIBUTING*',
+    'EXAMPLES*',
+    'FAQ*',
+    'INSTALL*',
+    'LICENSE*',
+    'NEWS*',
+    'README*',
+    'SECURITY*',
+    'TODO*',
+  ] & `git ls-files -z`.split("\0")
+  spec.files -= [
+    '.ruby-version',
+    'Gemfile.lock',
+  ]
 end
 
 
