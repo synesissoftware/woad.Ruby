@@ -5,9 +5,9 @@
 # Purpose:  Primary require for woad.Ruby library
 #
 # Created:  15th August 2026
-# Updated:  15th August 2026
+# Updated:  19th August 2026
 #
-# Home:     http://github.com/synesissoftware/woad.Ruby
+# Home:     https://github.com/synesissoftware/woad.Ruby
 #
 # Author:   Matthew Wilson
 #
