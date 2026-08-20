@@ -50,7 +50,7 @@
 module Woad
 
   # Current version of the woad.Ruby library
-  VERSION           = '0.0.0'
+  VERSION           = '0.0.1'
 
   private
   # @!visibility private

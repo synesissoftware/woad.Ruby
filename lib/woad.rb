@@ -50,6 +50,53 @@
 ## Root module for *woad*
 module Woad
 
+  # Reset
+
+  RESET                   = "\e[0m"
+
+  # Foreground (standard)
+
+  FG_BLACK                = "\e[30m"
+  FG_RED                  = "\e[31m"
+  FG_GREEN                = "\e[32m"
+  FG_YELLOW               = "\e[33m"
+  FG_BLUE                 = "\e[34m"
+  FG_MAGENTA              = "\e[35m"
+  FG_CYAN                 = "\e[36m"
+  FG_WHITE                = "\e[37m"
+
+  # Foreground (bright)
+
+  FG_BRIGHT_BLACK         = "\e[90m"
+  FG_BRIGHT_RED           = "\e[91m"
+  FG_BRIGHT_GREEN         = "\e[92m"
+  FG_BRIGHT_YELLOW        = "\e[93m"
+  FG_BRIGHT_BLUE          = "\e[94m"
+  FG_BRIGHT_MAGENTA       = "\e[95m"
+  FG_BRIGHT_CYAN          = "\e[96m"
+  FG_BRIGHT_WHITE         = "\e[97m"
+
+  # Background (standard)
+
+  BG_BLACK                = "\e[40m"
+  BG_RED                  = "\e[41m"
+  BG_GREEN                = "\e[42m"
+  BG_YELLOW               = "\e[43m"
+  BG_BLUE                 = "\e[44m"
+  BG_MAGENTA              = "\e[45m"
+  BG_CYAN                 = "\e[46m"
+  BG_WHITE                = "\e[47m"
+
+  # Background (bright)
+
+  BG_BRIGHT_BLACK         = "\e[100m"
+  BG_BRIGHT_RED           = "\e[101m"
+  BG_BRIGHT_GREEN         = "\e[102m"
+  BG_BRIGHT_YELLOW        = "\e[103m"
+  BG_BRIGHT_BLUE          = "\e[104m"
+  BG_BRIGHT_MAGENTA       = "\e[105m"
+  BG_BRIGHT_CYAN          = "\e[106m"
+  BG_BRIGHT_WHITE         = "\e[107m"
 end # module Woad
 
 

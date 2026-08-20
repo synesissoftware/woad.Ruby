@@ -47,7 +47,7 @@ END_DESC
     'source_code_uri' => 'https://github.com/synesissoftware/woad.Ruby',
   }
 
-  spec.files        = Dir[ 'Rakefile', '{bin,examples,lib,man,spec,test}/**/*', 'AUTHORS.md', 'CHANGES.md', 'LICENSE*', 'README*', 'TODO.md' ]
+  spec.files        = Dir[ 'Rakefile', '{bin,examples,lib,man,spec,test}/**/*', 'AUTHORS.md', 'CHANGES.md', 'LICENSE*', 'NEWS.md', 'README*', 'TODO.md' ]
 end
 
 
