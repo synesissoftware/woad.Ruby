@@ -116,7 +116,7 @@ Projects that depend on **woad.Ruby**:
 
 ### Related projects
 
-* [**woad**](https://github.com/synesissoftware/woad/) (**C**);
+* [**woad**](https://github.com/synesissoftware/woad/) (**C**, **C++**);
 * [**woad.Python**](https://github.com/synesissoftware/woad.Python/);
 * [**woad.Rust**](https://github.com/synesissoftware/woad.Rust/);
 
