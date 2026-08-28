@@ -15,8 +15,6 @@ require 'woad/version'
 
 PROJECT_URL = 'https://github.com/synesissoftware/woad.Ruby'
 
-PROJECT_URL = 'https://github.com/synesissoftware/woad.Ruby'
-
 
 Gem::Specification.new do |spec|
 
