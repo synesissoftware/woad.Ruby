@@ -1,6 +1,14 @@
 # woad.Ruby - Changes <!-- omit in toc -->
 
 
+## 0.0.3 - 28th August 2026
+
+* updated GitHub Actions checkout references to **v7**;
+* added exclusions for obsolete Ruby versions to **.ruby-version-exclusions**;
+* corrected the **woad** related-project description to include **C++**;
+* retained the Ruby 2.0+ gem requirement and corrected shared project URL metadata;
+
+
 ## 0.0.2 - 19th August 2026
 
 * **EXAMPLES.md** catalog and **examples/print_status**;

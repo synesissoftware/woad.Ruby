@@ -1,0 +1,2 @@
+woad.Ruby - Minimal ANSI terminal colour codes, for Ruby
+Copyright (c) Matthew Wilson, 2026

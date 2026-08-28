@@ -13,6 +13,7 @@ $:.unshift File.join(File.dirname(__FILE__), 'lib')
 
 require 'woad/version'
 
+PROJECT_URL = 'https://github.com/synesissoftware/woad.Ruby'
 
 PROJECT_URL = 'https://github.com/synesissoftware/woad.Ruby'
 
@@ -37,7 +38,7 @@ END_DESC
   spec.homepage     = PROJECT_URL
   spec.license      = 'BSD-3-Clause'
 
-  spec.required_ruby_version = [ '>= 2.0' ]
+  spec.required_ruby_version = [ '>= 2.0', '< 5' ]
 
   spec.metadata = {
     'bug_tracker_uri' => "#{PROJECT_URL}/issues",
