@@ -10,9 +10,9 @@
 
 ## Defect reports, fixes and suggestions (for which we are very grateful)
 
-| Name    | GitHub |
-| ------- | ------ |
-| \<none> |        |
+| Name        | GitHub                            |
+| ----------- | --------------------------------- |
+| \<none>     |                                   |
 
 
 Contributions are welcomed.
