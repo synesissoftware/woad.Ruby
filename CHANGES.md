@@ -1,6 +1,12 @@
 # woad.Ruby - Changes <!-- omit in toc -->
 
 
+## 0.0.4 - 30th August 2026
+
+* added shared **.vimrc** editor configuration;
+* removed obsolete `bp-2` push branch from **GitHub Actions** CI;
+
+
 ## 0.0.3 - 28th August 2026
 
 * updated GitHub Actions checkout references to **v7**;
