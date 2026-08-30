@@ -5,7 +5,7 @@
 # Purpose:  Version for woad.Ruby library
 #
 # Created:  15th August 2026
-# Updated:  28th August 2026
+# Updated:  30th August 2026
 #
 # Home:     https://github.com/synesissoftware/woad.Ruby
 #
@@ -50,7 +50,7 @@
 module Woad
 
   # Current version of the woad.Ruby library
-  VERSION           = '0.0.3'
+  VERSION           = '0.0.4'
 
   private
   # @!visibility private
