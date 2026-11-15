@@ -1,6 +1,16 @@
 # woad.Ruby - Changes <!-- omit in toc -->
 
 
+## 0.1.0-alpha1 - 16th November 2026
+
+* added `BLINKING` and `BOLD`, byte-for-byte with **woad** **0.3.0**;
+* added cached `colour_policy`, `refresh`, `supports_colour`, and `seq_for` for the portable colour contract (Unix attachment and `TERM=dumb`; no console probe);
+* added **test/component/tc_colour_policy.rb** (decision rows 1-22) and **examples/conditional**;
+* left Windows virtual-terminal mode and mintty PTY recognition for a later alpha;
+* moved the fixed SGR sequences into **Woad::Sequences**, mixed into **Woad**;
+* documented the colour environment variables and their accepted forms in **README.md**;
+
+
 ## 0.0.4 - 30th August 2026
 
 * added shared **.vimrc** editor configuration;

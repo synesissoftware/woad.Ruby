@@ -4,8 +4,9 @@
 ## Functional improvements
 
 * [x] ~~~SGR colour and reset codes~~~ ✅;
-* [ ] TTY-conditional colour codes (process and per-stream);
-* [ ] Windows virtual-terminal gating (OS build + `GetConsoleMode`);
+* [x] ~~~portable colour policy (`colour_policy`, `refresh`, `supports_colour`, `seq_for`), including `BOLD` and `BLINKING`~~~ - ✅;
+* [ ] Windows virtual-terminal gating (OS build + `GetConsoleMode` + `WOAD_SET_CONSOLE_MODE`);
+* [ ] mintty / MSYS2 / Cygwin PTY recognition;
 
 
 ## Performance improvements

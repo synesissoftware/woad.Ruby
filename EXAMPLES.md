@@ -2,6 +2,7 @@
 
 |Name|Source & Description|Summary|
 |---|---|---|
+|**conditional**|[examples/conditional.rb](./examples/conditional.rb)<br/>[examples/conditional.md](./examples/conditional.md)|Prints a sequence only when the writer supports colour|
 |**print_status**|[examples/print_status.rb](./examples/print_status.rb)<br/>[examples/print_status.md](./examples/print_status.md)|Prints sample status words with **woad** SGR colour constants|
 
 

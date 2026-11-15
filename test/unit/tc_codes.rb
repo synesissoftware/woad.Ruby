@@ -10,6 +10,16 @@ require 'test/unit'
 
 class Test_codes < Test::Unit::TestCase
 
+  def test_BLINKING
+
+    assert_equal "\e[5m", Woad::BLINKING
+  end
+
+  def test_BOLD
+
+    assert_equal "\e[1m", Woad::BOLD
+  end
+
   def test_RESET
 
     assert_equal "\e[0m", Woad::RESET
@@ -28,6 +38,8 @@ class Test_codes < Test::Unit::TestCase
   def test_codes_are_csi_sgr
 
     [
+      Woad::BLINKING,
+      Woad::BOLD,
       Woad::RESET,
       Woad::FG_BLACK,
       Woad::FG_BRIGHT_WHITE,
