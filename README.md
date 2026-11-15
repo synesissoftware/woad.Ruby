@@ -15,6 +15,7 @@ Minimal ANSI terminal colour codes, for Ruby
 - [Developer Experience](#developer-experience)
 - [Installation](#installation)
 - [Components](#components)
+- [Environment](#environment)
 - [Examples](#examples)
 - [Project Information](#project-information)
   - [Where to get help](#where-to-get-help)
@@ -85,6 +86,24 @@ puts "#{Woad::FG_GREEN}ok#{Woad::RESET}"
 ## Components
 
 **woad.Ruby** ships fixed SGR sequences (`BLINKING`, `BOLD`, `RESET`, `FG_*`, `BG_*`, including bright variants) and the portable colour policy: `colour_policy`, `refresh`, `supports_colour`, and `seq_for`. On Unix a terminal supports colour when the policy is automatic and `TERM` is not `dumb`. Windows virtual-terminal mode and mintty PTY recognition are not implemented.
+
+
+## Environment
+
+`Woad.colour_policy` returns `COLOUR_POLICY_AUTO` (0), `COLOUR_POLICY_FORCE` (1), or `COLOUR_POLICY_INHIBIT` (2). The result is cached until `Woad.refresh` is invoked.
+
+A variable that is unset or empty is absent. Values are not trimmed. The first present variable in this order wins:
+
+1. Non-empty `WOAD_COLOUR`, otherwise non-empty `WOAD_COLOR`. Compared case-insensitively. Truey forces: `1`, `always`, `force`, `on`, `true`, `yes`. Falsey inhibits: `0`, `false`, `never`, `no`, `none`, `off`. Anything else, including `auto`, selects auto and does not fall through;
+2. Non-empty `NO_COLOR` inhibits, whatever its text is;
+3. Non-empty `CLICOLOR_FORCE` other than the exact bytes `0` forces. Exact `0` does not force and does not inhibit;
+4. Non-empty `FORCE_COLOR` other than exact `0` or `false` (any capitalisation) forces. Exact `0` and `false` do not force and do not inhibit;
+5. `CLICOLOR` equal to the exact bytes `0` inhibits. Any other value is ignored;
+6. Otherwise auto.
+
+`TERM` equal to `dumb`, in any capitalisation, is cached beside the policy. It is not a policy value. It suppresses colour only when the policy is auto. `force` ignores the terminal and `TERM`. `inhibit` never emits colour.
+
+On Unix, auto plus a terminal plus a `TERM` that is not `dumb` means colour. There is no console probe. `WOAD_SET_CONSOLE_MODE` is not read in this alpha.
 
 
 ## Examples

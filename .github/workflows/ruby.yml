@@ -7,7 +7,7 @@
 
 #
 # Created: 15th August 2026
-# Updated: 28th August 2026
+# Updated: 16th November 2026
 #
 
 name: Ruby
@@ -58,8 +58,9 @@ jobs:
             ruby-version: '2.5'
           - os: ubuntu-latest
             ruby-version: '2.4'
-          - os: ubuntu-latest
-            ruby-version: '2.0'
+          # 2.0-2.2 have no ruby-builder tarball for ubuntu-26.04
+          # (ubuntu-latest). The gem still claims Ruby 2.0; this cell cannot
+          # install it.
           - os: windows-latest
             ruby-version: mingw
 
