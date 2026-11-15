@@ -32,6 +32,9 @@ class Test_version < Test::Unit::TestCase
 
   def test_VERSION_has_consistent_format
 
-    assert_equal Woad::VERSION.split('.')[0..2].join('.'), "#{Woad::VERSION_MAJOR}.#{Woad::VERSION_MINOR}.#{Woad::VERSION_REVISION}"
+    core = Woad::VERSION.split('-', 2)[0]
+
+    assert_equal '0.1.0-alpha1', Woad::VERSION
+    assert_equal "#{Woad::VERSION_MAJOR}.#{Woad::VERSION_MINOR}.#{Woad::VERSION_REVISION}", core
   end
 end

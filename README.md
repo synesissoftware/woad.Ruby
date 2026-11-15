@@ -12,6 +12,7 @@ Minimal ANSI terminal colour codes, for Ruby
 ## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
+- [Developer Experience](#developer-experience)
 - [Installation](#installation)
 - [Components](#components)
 - [Examples](#examples)
@@ -38,6 +39,30 @@ Minimal ANSI terminal colour codes, for Ruby
 It has **no dependencies** on any other non-standard library.
 
 
+## Developer Experience
+
+**Ruby 2.0+** is already enough. There are no gems to install beyond **woad** itself.
+
+```
+gem install woad
+```
+
+The smallest useful call prints a sequence only when the writer supports colour:
+
+```Ruby
+require 'woad'
+
+green = Woad.seq_for($stdout, Woad::FG_GREEN)
+reset = Woad.seq_for($stdout, Woad::RESET)
+
+puts "#{green}ok#{reset}"
+```
+
+That is [examples/conditional.rb](./examples/conditional.rb). Fixed sequences (`BOLD`, `BLINKING`, `FG_*`, `BG_*`) always contain the SGR bytes. `colour_policy`, `supports_colour`, and `seq_for` apply the cached environment policy. `refresh` drops that cache.
+
+From a checkout, `bundle exec rake test` runs the unit and component suites. Installation detail is in [INSTALL.md](./INSTALL.md).
+
+
 ## Installation
 
 Install via **gem** as in:
@@ -59,7 +84,7 @@ puts "#{Woad::FG_GREEN}ok#{Woad::RESET}"
 
 ## Components
 
-**woad.Ruby** ships SGR string constants (`RESET`, `FG_*`, `BG_*`, including bright variants). TTY/stream gating and Windows virtual-terminal opt-in are not implemented yet.
+**woad.Ruby** ships fixed SGR sequences (`BLINKING`, `BOLD`, `RESET`, `FG_*`, `BG_*`, including bright variants) and the portable colour policy: `colour_policy`, `refresh`, `supports_colour`, and `seq_for`. On Unix a terminal supports colour when the policy is automatic and `TERM` is not `dumb`. Windows virtual-terminal mode and mintty PTY recognition are not implemented.
 
 
 ## Examples
@@ -90,7 +115,7 @@ Libraries upon which **woad.Ruby** depends:
 
 ##### Runtime Dependencies (aka "Normal Dependencies")
 
-* \<none>;
+* \<none>. Windows virtual-terminal mode and mintty PTY recognition are not implemented, so this gem does not bind a console API;
 
 
 ##### Development Dependencies

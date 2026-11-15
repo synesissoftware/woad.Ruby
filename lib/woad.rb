@@ -5,7 +5,7 @@
 # Purpose:  Primary require for woad.Ruby library
 #
 # Created:  15th August 2026
-# Updated:  19th August 2026
+# Updated:  16th November 2026
 #
 # Home:     https://github.com/synesissoftware/woad.Ruby
 #
@@ -50,9 +50,168 @@
 ## Root module for *woad*
 module Woad
 
-  # Reset
+  # Attributes (always emit; they do not consult the environment)
 
+  BLINKING                = "\e[5m"
+  BOLD                    = "\e[1m"
   RESET                   = "\e[0m"
+
+  # Colour policy (cached until refresh)
+
+  COLOUR_POLICY_AUTO      = 0
+  COLOUR_POLICY_FORCE     = 1
+  COLOUR_POLICY_INHIBIT   = 2
+
+  # @!visibility private
+  FALSEY_ = [ # :nodoc:
+    '0',
+    'false',
+    'never',
+    'no',
+    'none',
+    'off',
+  ].freeze
+  # @!visibility private
+  TRUEY_ = [ # :nodoc:
+    '1',
+    'always',
+    'force',
+    'on',
+    'true',
+    'yes',
+  ].freeze
+  private_constant :FALSEY_
+  private_constant :TRUEY_
+
+  # Returns the cached colour policy: 0 auto, 1 force, 2 inhibit.
+  def self.colour_policy
+
+    ensure_environment_
+
+    @policy
+  end
+
+  # Drops the cached policy and the cached TERM=dumb flag.
+  def self.refresh
+
+    @environment_determined = false
+
+    nil
+  end
+
+  # True when colour should be emitted for this writer.
+  def self.supports_colour(io)
+
+    ensure_environment_
+
+    case @policy
+    when COLOUR_POLICY_FORCE
+
+      return true
+    when COLOUR_POLICY_INHIBIT
+
+      return false
+    end
+
+    return false unless attached_(io)
+    return false if @term_is_dumb
+
+    true
+  end
+
+  # The sequence when the writer supports colour; otherwise "".
+  def self.seq_for(io, seq)
+
+    return '' if seq.nil?
+    return '' unless supports_colour(io)
+
+    seq
+  end
+
+  class << self
+
+    private
+
+    def attached_(io)
+
+      return false if io.nil?
+      return false unless io.respond_to?(:isatty)
+
+      io.isatty ? true : false
+    end
+
+    def ensure_environment_
+
+      return if @environment_determined
+
+      @policy = policy_from_environment_
+      @term_is_dumb = term_is_dumb_
+      @environment_determined = true
+    end
+
+    def env_nonempty_(name)
+
+      value = ENV[name]
+
+      return nil if value.nil? || value.empty?
+
+      value
+    end
+
+    def listed_?(value, tokens)
+
+      tokens.any? { |token| value.casecmp(token) == 0 }
+    end
+
+    def policy_from_environment_
+
+      value = env_nonempty_('WOAD_COLOUR')
+      value = env_nonempty_('WOAD_COLOR') if value.nil?
+
+      unless value.nil?
+
+        return COLOUR_POLICY_FORCE if listed_?(value, TRUEY_)
+        return COLOUR_POLICY_INHIBIT if listed_?(value, FALSEY_)
+
+        return COLOUR_POLICY_AUTO
+      end
+
+      return COLOUR_POLICY_INHIBIT unless env_nonempty_('NO_COLOR').nil?
+
+      value = env_nonempty_('CLICOLOR_FORCE')
+
+      unless value.nil?
+
+        return COLOUR_POLICY_FORCE if value != '0'
+      end
+
+      value = env_nonempty_('FORCE_COLOR')
+
+      unless value.nil?
+
+        if value != '0' && value.casecmp('false') != 0
+
+          return COLOUR_POLICY_FORCE
+        end
+      end
+
+      value = env_nonempty_('CLICOLOR')
+
+      unless value.nil?
+
+        return COLOUR_POLICY_INHIBIT if value == '0'
+      end
+
+      COLOUR_POLICY_AUTO
+    end
+
+    def term_is_dumb_
+
+      value = env_nonempty_('TERM')
+
+      !value.nil? && value.casecmp('dumb') == 0
+    end
+  end
 
   # Foreground (standard)
 
